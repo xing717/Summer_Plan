@@ -1,0 +1,59 @@
+{
+  "info": {
+    "_postman_id": "40d02190-14e2-43e8-a436-6ce2c1cd8444",
+    "name": "Blog_Interface_Test",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "54375774",
+    "_collection_link": "https://go.postman.co/collection/54375774-40d02190-14e2-43e8-a436-6ce2c1cd8444?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "01-登录认证模块",
+      "item": [
+        {
+          "name": "GET_验证环境变量",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "02-用户信息模块",
+      "item": []
+    },
+    {
+      "name": "03-业务功能模块",
+      "item": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          "pm.request.headers.add({\r",
+          "    key: 'Content-Type',\r",
+          "    value: 'application/json'\r",
+          "});"
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ]
+}
