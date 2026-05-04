@@ -1,0 +1,130 @@
+{
+  "info": {
+    "_postman_id": "40d02190-14e2-43e8-a436-6ce2c1cd8444",
+    "name": "Blog_Interface_Test",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "54375774",
+    "_collection_link": "https://go.postman.co/collection/54375774-40d02190-14e2-43e8-a436-6ce2c1cd8444?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "01-登录认证模块",
+      "item": [
+        {
+          "name": "GET_验证环境变量",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "01-登录接口",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "// 解析返回的JSON\r",
+                  "let res = pm.response.json();\r",
+                  "// 把token存到测试环境变量里\r",
+                  "pm.environment.set(\"token\", res.token);\r",
+                  "console.log(\"登录成功，token已存入环境变量：\", res.token);\r",
+                  "// 断言1：验证响应状态码是201\r",
+                  "pm.test(\"登录成功，状态码为201\", function () {\r",
+                  "    pm.response.to.have.status(201);\r",
+                  "});\r",
+                  "\r",
+                  "// 断言2：验证token不为空\r",
+                  "pm.test(\"成功获取token\", function () {\r",
+                  "    pm.expect(res.token).to.be.a('string').and.not.empty;\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"mor_2314\",\r\n    \"password\": \"83r5^_\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/auth/login",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "02-用户信息模块",
+      "item": [
+        {
+          "name": "02-获取用户信息",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "03-业务功能模块",
+      "item": [
+        {
+          "name": "03-业务数据查询",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          "pm.request.headers.add({\r",
+          "    key: 'Content-Type',\r",
+          "    value: 'application/json'\r",
+          "});"
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ]
+}
